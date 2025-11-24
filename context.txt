@@ -1,0 +1,132 @@
+
+
+# 🔵 Q1. What is the intuition of a linear model?
+
+A linear model assumes the output changes in a straight-line way when inputs change.
+Like “more square feet → more house price.” 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q2. Explain the linear formula.
+
+`h(X) = θ0 + θ1X1`
+θ0 is starting value.
+θ1 tells how much output changes when input changes. 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q3. How to implement general linear formula in Python?
+
+Add bias + sum of (weight × feature).
+This is done in `_compute_z()` in the PDF. 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q4. Structure of X and y
+
+* X is a list of samples. Each sample is a list of features.
+* y is a list of labels (one per sample). 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q5. Why linear output is not good for classification?
+
+Because it can be any number, like 300 or -50.
+A class needs a probability between 0 and 1. 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q6. What modification converts linear → logistic?
+
+Wrap the linear output z inside a Sigmoid function. 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q7. Sigmoid formula and behavior
+
+`g(z) = 1 / (1 + e^-z)`
+Big positive z → output near 1.
+Big negative z → output near 0.
+z=0 → output = 0.5. 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q8. Python implementation of Sigmoid
+
+Same as in the PDF’s `_sigmoid` function, with checks for big numbers. 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q9. Why sigmoid output is a valid probability?
+
+Because it comes from **odds** and **log-odds**, which map naturally into [0,1].
+The math links linear z → probability p. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q10. Probability, Odds, Log-Odds
+
+* Probability: p (0 to 1)
+* Odds: p/(1-p) (0 to ∞)
+* Log-Odds: log(p/(1-p)) (-∞ to ∞) 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q11. Derive sigmoid (simple explanation)
+
+Set log-odds equal to linear z.
+Solve the equation for p.
+You get the sigmoid formula. 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q12. How is the full logistic model trained?
+
+Two things:
+
+1. **Cost Function:** Measures how wrong prediction is (log-loss).
+2. **Gradient Descent:** Adjusts weights step-by-step to lower the cost. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q13. Full class code
+
+Exactly as shown in the PDF.
+It contains: sigmoid, cost, gradients, fit, predict. 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q14. How to test the model?
+
+Use a simple dataset (hours studied).
+Train the model.
+Predict on new samples. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q15. Expected output of experiment
+
+* Cost goes down over iterations.
+* Final theta values learned.
+* Predictions:
+
+  * Small hours → fail
+  * Large hours → pass
+  * Middle ~3 hours → around 0.5 probability. 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q16. Main limitation of this pure Python version
+
+It is slow because of loops.
+Libraries like NumPy are much faster. 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 🔵 Q17. What happens if you change learning rate or iterations?
+
+* Very high learning rate → model explodes.
+* Very low → learning is very slow.
+* Very few iterations → underfitting. 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
