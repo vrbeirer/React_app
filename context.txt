@@ -1,28 +1,36 @@
 
 
-# 🔵 Q1. What is the intuition of a linear model?
+# 🔵 Q1: What is the fundamental intuition behind a linear model?
 
 A linear model assumes the output changes in a straight-line way when inputs change.
 Like “more square feet → more house price.” 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-# 🔵 Q2. Explain the linear formula.
+# 🔵 Q2. How is this linear relationship represented mathematically? Explain the formula and its components.
 
 `h(X) = θ0 + θ1X1`
 θ0 is starting value.
 θ1 tells how much output changes when input changes. 
 
+ This is the familiar equation of a line (y = c + mx).
+ : The predicted output value. [ also; "the Hypothesis" (rings a bell?)]
+ : The input feature value (e.g., square footage).
+ (theta_1): This is the weight or coefficient. It corresponds to the slope (m) and defines how much the output h(X) changes
+ for a one-unit change in .
+ (theta_0): This is the bias or intercept. It corresponds to the y-intercept (c) and is the baseline prediction when all input
+ features are zero
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-# 🔵 Q3. How to implement general linear formula in Python?
+# 🔵 Q3. How do we implement this generalized linear formula in core Python?
 
 Add bias + sum of (weight × feature).
 This is done in `_compute_z()` in the PDF. 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# 🔵 Q4. Structure of X and y
+# 🔵 Q4.  What is the expected structure of the input data (X) and target data (y) for a model?
 
 * X is a list of samples. Each sample is a list of features.
 * y is a list of labels (one per sample). 
@@ -36,13 +44,14 @@ A class needs a probability between 0 and 1.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# 🔵 Q6. What modification converts linear → logistic?
+# 🔵 Q6.  What is the primary modification needed to convert a linear regression model into a logistic
+ regression model?
 
 Wrap the linear output z inside a Sigmoid function. 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# 🔵 Q7. Sigmoid formula and behavior
+# 🔵 Q7.  What is the formula for the Sigmoid function, and how does it behave?
 
 `g(z) = 1 / (1 + e^-z)`
 Big positive z → output near 1.
@@ -51,7 +60,7 @@ z=0 → output = 0.5.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# 🔵 Q8. Python implementation of Sigmoid
+# 🔵 Q8. Show the Python implementation of the Sigmoid function and the new hypothesis.
 
 Same as in the PDF’s `_sigmoid` function, with checks for big numbers. 
 
@@ -80,7 +89,8 @@ You get the sigmoid formula.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# 🔵 Q12. How is the full logistic model trained?
+# 🔵 Q12. How are all these components assembled into a trainable model? Explain the role of the Cost
+ Function and Gradient Descent.
 
 Two things:
 
@@ -96,7 +106,7 @@ It contains: sigmoid, cost, gradients, fit, predict.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# 🔵 Q14. How to test the model?
+# 🔵 Q14. : How do we test this model? Provide the setup for a sample experiment
 
 Use a simple dataset (hours studied).
 Train the model.
@@ -104,7 +114,7 @@ Predict on new samples.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# 🔵 Q15. Expected output of experiment
+# 🔵 Q15.  What is the expected output of the experiment, and how should it be interpreted?
 
 * Cost goes down over iterations.
 * Final theta values learned.
